@@ -54,6 +54,7 @@ public class JCMediaManager implements IMediaPlayer.OnPreparedListener, IMediaPl
 
     public JCMediaManager() {
         mediaPlayer = new IjkMediaPlayer();
+        mediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, "framedrop", 50);
         mMediaHandlerThread = new HandlerThread(TAG);
         mMediaHandlerThread.start();
         mMediaHandler = new MediaHandler((mMediaHandlerThread.getLooper()));
@@ -83,6 +84,7 @@ public class JCMediaManager implements IMediaPlayer.OnPreparedListener, IMediaPl
                         currentVideoHeight = 0;
                         mediaPlayer.release();
                         mediaPlayer = new IjkMediaPlayer();
+                        mediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, "framedrop", 50);
                         mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
                         mediaPlayer.setDataSource(((FuckBean) msg.obj).url, ((FuckBean) msg.obj).mapHeadData);
                         mediaPlayer.setLooping(((FuckBean) msg.obj).looping);
